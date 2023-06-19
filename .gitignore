@@ -6,4 +6,4 @@
 
 # Ignore reddit credentials file
 credentials.py
-__pycache__
+__pycache__/
