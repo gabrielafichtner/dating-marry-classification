@@ -16,7 +16,6 @@ Knowing from which group a person is can narrow down strategies used to support 
 - Applying sentiment analysis in posts
 - Using predictive classification models
 
-# How?
 Characteristics of posts' texts such as number of special characters, uppercase letters, lowercase letter and sentiment analysis scores were calculated.
 These variables along posts' texts were used in both models.
 
