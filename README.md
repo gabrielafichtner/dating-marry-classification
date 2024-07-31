@@ -1,54 +1,37 @@
 # Everywhere better
-This work is an analysis for 'Everywhere better', an app that offers emotional and psychological support.
-They wanted to understand differences in online behavior between married and single people and be able to predict from which group a person is.
+## Overview
+The Everywhere Better project aims to enhance the capabilities of the "Everywhere Better" app, which provides emotional and psychological support. The goal is to analyze online behavior differences between married and single individuals and predict to which group a person belongs based on text data.
 
-Text data were collected from reddit social platform. Since people go there with questions and concerns, Reddit was chosen as the source of data.
-The subreddits chosen to represent both groups were "marriage" and "dating".
+Data was collected from Reddit, focusing on the "marriage" and "dating" subreddits, as these are spaces where people commonly share their concerns and questions.
 
-# Objective
+## Objective
+The main objective is to refine the support strategies of the "Everywhere Better" app by identifying whether a user is likely married or single. This identification will help tailor the advice and support provided to users.
 
-The objective of this work is to help improve 'Everywhere Better' tools to better support their clients.
-Knowing from which group a person is can narrow down strategies used to support clients who come for help.
-
-# How? 
-- Using PRAW API to scrape subreddits
-- Searching keywords in top 10 most common words
-- Applying sentiment analysis in posts
-- Using predictive classification models
-
-Characteristics of posts' texts such as number of special characters, uppercase letters, lowercase letter and sentiment analysis scores were calculated.
-These variables along posts' texts were used in both models.
-
-
-# Type of Model
-
-Two models were explored to approach this problem: Random Forests and Logistic Regression.
-They are both supervised models of predictive classification. Logistic regression resulted in a higher accuracy on unseen data, of about 92%.
-Since married and single people should be treated equal when coming for support, the metric for optimization was accuracy.
-
-
-# Data Dictionary
-|Feature|Type|Dataset|Description|
-|---|---|---|---|
-|self_text|object|marriage_dating.csv|description of posts texts| 
-|title|object|marriage_dating.csv|title of posts texts| 
-|subreddit|object|marriage_dating.csv|'marriage' or 'dating' subreddit| 
-|special_characters|int|date_marry|number of special characters of posts texts| 
-|compounds|object|date_marry|overall score from negative -1 to positive 1| 
-|neg|object|date_marry|overall negative words score of post texts| 
-|neu|object|date_marry|overall neutral words score of post texts| 
-|positive|object|date_marry|overall positive words score of posts texts|
-|special_characters|int|date_marry|number of special characters of posts texts| 
-|percent_special_characters|float|date_marry|proportion of characters in posts texts|
-|compounds|object|date_marry|overall score from negative -1 to positive 1| 
-|lower|int|date_marry|number of lowercase letters  in posts texts| 
-|upper|int|date_marry|number of uppercase letters in posts texts| 
-|up_low|float|date_marry|number of uppercase letters divided by number of lowercase letters in posts texts|
-
-
+## Methodology
+### Data Collection
+- Source: Reddit
+- Subreddits: "marriage" and "dating"
+- Data Collection Tool: PRAW API
+- Data Collected: Titles and texts of posts, subreddit information
+### Data Processing
+Data Consolidation: Posts from each subreddit were combined into a single dataframe and exported as a CSV file.
+### Exploratory Data Analysis (EDA):
+- Analyzed the most common words, excluding and including stop words
+- Examined the use of special characters, text length, and sentiment analysis
+- Identified specific keywords unique to each subreddit group
+### Modelling
+- Text Vectorization:
+Compared CountVectorizer and TfidfVectorizer. Chose TfidfVectorizer for better accuracy.
+- Predictive Models:
+Tested various models including KNeighbors Classifier and RidgeClassifier
+Selected RidgeClassifier for its high accuracy (over 99%)
+- Feature Importance: Analyzed coefficients to determine key words for each group
+### Results
+- Keywords: Identified distinct keywords that correlate with each group.
+- Model Performance: RidgeClassifier demonstrated excellent accuracy, distinguishing between the two groups effectively.
+Sentiment and Text Characteristics: Found nuanced differences in sentiment and text features between the two groups.
 
 # Conclusions and recommendations
-- Marriage keywords: "husband" and "wife" in top 10 most common words in marriage subreddit
-- Dating keywords: "dating" in top 10 most common words in dating subreddit
-- When removing the keywords found in top 10 most common words of both groups, the accuracy decreased by 3%. Their differences goes beyond that and should be further analyzed, as looking on some more nuanced characteristics in common.
-- When a client asks for support with their story, the model can predict from which group a person is from about 92% of times.
+The project successfully developed a model that can predict whether a text belongs to a married or dating person with high accuracy. This capability is expected to significantly enhance the personalization of support provided by the "Everywhere Better" app.
+
+Further research could involve expanding the dataset. The model could also be used for speech in speech to text models.
