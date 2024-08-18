@@ -26,12 +26,14 @@ Compared CountVectorizer and TfidfVectorizer. Chose TfidfVectorizer for better a
 Tested various models including KNeighbors Classifier and RidgeClassifier
 Selected RidgeClassifier for its high accuracy (over 99%)
 - Feature Importance: Analyzed coefficients to determine key words for each group
+- Model Performance: RidgeClassifier demonstrated excellent accuracy, distinguishing between the two groups effectively. RidgeClassifier got more marriage subreddit texts wrong than the other way around, probably because of an unbalanced data. Data had around 60% of dating subreddit posts and 40% of marriage subreddit posts. Besides that, the result does not seem to have a pattern of confusion between classes. Afterall, the accuracy score was more than 99%. Given that classification accuracy for both groups is equally important, accuracy was the primary metric used to select the model.
 ### Results
-- Keywords: Identified distinct keywords that correlate with each group.
-- Model Performance: RidgeClassifier demonstrated excellent accuracy, distinguishing between the two groups effectively.
-Sentiment and Text Characteristics: Found nuanced differences in sentiment and text features between the two groups.
-
+- Keywords and words with most predictive power: Most words of the ones with most predictive power between groups are very specific to their respective groups, it did not show valuable context on the issues people want to resolve.
+- Sentiment and Text Characteristics: Found nuanced differences in sentiment between the two groups, but not for text characteristics.
+- Final Model: RidgeClassifier.
 # Conclusions and recommendations
-The project successfully developed a model that can predict whether a text belongs to a married or dating person with high accuracy. This capability is expected to significantly enhance the personalization of support provided by the "Everywhere Better" app.
-
-Further research could involve expanding the dataset. The model could also be used for speech in speech to text models.
+The model was highly effective, achieving excellent accuracy in predicting whether a text belongs to a married or dating individual.
+<br><Br>
+This classification model is valuable for directing users to the most appropriate support within the "Everywhere Better" app, by allocating them to advisors who specialize in their specific relationship context.  Classifying users based on their relationship status may greatly assist in providing targeted, relevant support, ensuring that users receive the guidance that is most appropriate for their specific needs.
+<br><Br>
+Additionally, the model has potential for integration into speech-to-text systems to further enhance user experience.
